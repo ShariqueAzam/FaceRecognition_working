@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A0FAD45191BB94200B3F350 /* AttendenceTakenController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0FAD43191BB94200B3F350 /* AttendenceTakenController.m */; };
+		4A0FAD46191BB94200B3F350 /* AttendenceTakenController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A0FAD44191BB94200B3F350 /* AttendenceTakenController.xib */; };
 		4A1EB0B5190E3BA600B095D3 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A1EB0B4190E3BA600B095D3 /* CoreData.framework */; };
 		4A1EB0B7190E441000B095D3 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A1EB0B6190E441000B095D3 /* opencv2.framework */; };
 		4AC035D4191749CB00E17C1E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AC035B7191749CB00E17C1E /* Main.storyboard */; };
@@ -49,6 +51,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4A0FAD42191BB94200B3F350 /* AttendenceTakenController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttendenceTakenController.h; sourceTree = "<group>"; };
+		4A0FAD43191BB94200B3F350 /* AttendenceTakenController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttendenceTakenController.m; sourceTree = "<group>"; };
+		4A0FAD44191BB94200B3F350 /* AttendenceTakenController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AttendenceTakenController.xib; sourceTree = "<group>"; };
 		4A1EB0B4190E3BA600B095D3 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		4A1EB0B6190E441000B095D3 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = opencv2.framework; path = ../../../Downloads/opencv2.framework; sourceTree = "<group>"; };
 		4AC035B8191749CB00E17C1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -203,6 +208,9 @@
 			children = (
 				4C0B18DB16569E3100A95B1E /* RecognizeViewController.h */,
 				4C0B18DC16569E3100A95B1E /* RecognizeViewController.mm */,
+				4A0FAD42191BB94200B3F350 /* AttendenceTakenController.h */,
+				4A0FAD43191BB94200B3F350 /* AttendenceTakenController.m */,
+				4A0FAD44191BB94200B3F350 /* AttendenceTakenController.xib */,
 				4C9DEA4A1656631B003DBFB5 /* PeopleViewController.h */,
 				4C9DEA4B1656631B003DBFB5 /* PeopleViewController.mm */,
 				4C9DEA4E165666E2003DBFB5 /* NewPersonViewController.h */,
@@ -342,6 +350,7 @@
 				4CBE4D8D1655CAC8004B63D9 /* Default@2x.png in Resources */,
 				4AC035D4191749CB00E17C1E /* Main.storyboard in Resources */,
 				4AC035DF191749CB00E17C1E /* InfoPlist.strings in Resources */,
+				4A0FAD46191BB94200B3F350 /* AttendenceTakenController.xib in Resources */,
 				4AC035D7191749CB00E17C1E /* Images.xcassets in Resources */,
 				4CBE4D8F1655CAC8004B63D9 /* Default-568h@2x.png in Resources */,
 				4CBE4D921655CAC8004B63D9 /* MainStoryboard.storyboard in Resources */,
@@ -369,6 +378,7 @@
 				4AC035D8191749CB00E17C1E /* main.m in Sources */,
 				4AC035D9191749CB00E17C1E /* NUSAppDelegate.m in Sources */,
 				4AC035DA191749CB00E17C1E /* NUSSampleViewController.m in Sources */,
+				4A0FAD45191BB94200B3F350 /* AttendenceTakenController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

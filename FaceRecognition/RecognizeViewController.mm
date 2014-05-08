@@ -1,13 +1,8 @@
-//
-//  RecognizeViewController.mm
-//  FaceRecognition
-//
-//  Created by Michael Peterson on 2012-11-16.
-//
-//
+
 
 #import "RecognizeViewController.h"
 #import "OpenCVData.h"
+#import "AttendenceTakenController.h"
 
 
 #define CAPTURE_FPS 30
@@ -69,7 +64,7 @@
     if (self.frameNum == CAPTURE_FPS) {
         [self parseFaces:[self.faceDetector facesFromImage:image] forImage:image];
         self.frameNum = 0;
-    }
+        }
     
     self.frameNum++;
 }
@@ -106,20 +101,27 @@
             
             confidence = [NSString stringWithFormat:@"Confidence: %@",
                           [confidenceFormatter stringFromNumber:[match objectForKey:@"confidence"]]];
-                    }
+            //int i=0;
+            
+             }
         
     }
     
+    
     // All changes to the UI have to happen on the main thread
     dispatch_sync(dispatch_get_main_queue(), ^{
+        NSString * nomatch=@"No match found";
         self.instructionLabel.text = message;
         self.confidenceLabel.text = confidence;
         [self highlightFace:[OpenCVData faceToCGRect:face] withColor:highlightColor];
+       
+        //to connect to attendance DB and show the alert view
+        if(![message isEqualToString:nomatch]){
+            [self jsonCall:message];
+            [self printMessage];
+            
+        }
     });
-    
-    [self jsonCall:message];
-    [self printMessage];
- 
     
 }
 
@@ -183,14 +185,37 @@ didCompleteWithError:(NSError *)error
 }
 -(void) printMessage
 {
+ 
+ //   [alert dismissWithClickedButtonIndex:0 animated:YES];
+
     UIAlertView *alertPopUp = [[UIAlertView alloc] initWithTitle:@"Alert"
                                                          message:@"Attendance Taken"
-                                                        delegate:nil cancelButtonTitle:@"ok"
+                                                        delegate:self cancelButtonTitle:@"ok"
+                                               otherButtonTitles:nil];
+   [alertPopUp show];
+    UIViewController *attendence =[[AttendenceTakenController alloc]initWithNibName:@"AttendenceTakenController" bundle:nil];
+    [self presentViewController:attendence animated:YES completion:nil];
+}
+
+
+
+
+-(void) printTakenMessage
+{
+    
+    //   [alert dismissWithClickedButtonIndex:0 animated:YES];
+    
+    UIAlertView *alertPopUp = [[UIAlertView alloc] initWithTitle:@"Alert"
+                                                         message:@"Attendance already taken"
+                                                        delegate:self cancelButtonTitle:@"ok"
                                                otherButtonTitles:nil];
     [alertPopUp show];
 
     
+    
 }
+
+
 
 -(void)jsonCall:(NSString *)msg
 {
@@ -200,7 +225,13 @@ didCompleteWithError:(NSError *)error
     NSURLSession *session = [NSURLSession sessionWithConfiguration:defaultConfigObject delegate:self delegateQueue:[NSOperationQueue mainQueue]];
     instructionLabel.text=msg;
     NSLog(@"value %@",msg);
-    [[session dataTaskWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://10.10.2.246/ServiceTest/TestService.asmx/HelloWorld?updateName=%@",instructionLabel.text]]] resume];
+    [[session dataTaskWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://192.168.0.20/ServiceTest/TestService.asmx/HelloWorld?updateName=%@",instructionLabel.text]]] resume];
+    
+    
+        
+
 }
+
+
    
 @end
